@@ -159,7 +159,7 @@ html_static_path = [ "_static" ]
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
-#html_use_smartypants = True
+html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
 #html_sidebars = {}
@@ -178,7 +178,7 @@ html_static_path = [ "_static" ]
 #html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
+html_show_sourcelink = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 #html_show_sphinx = True
@@ -302,6 +302,22 @@ source_parsers = {
 
 source_suffix = ['.rst', '.md']
 
+# Variables for string replacement functions
+gaffer_linux_package = '0.46.0.0'
+gaffer_osx_package = '0.46.0.0'
+
+arnold_version = '2018'
+arnold_path_linux = '/opt/solidangle/mtoa/{0}/'.format( arnold_version )
+arnold_path_osx = '/opt/solidangle/mtoa/{0}/'.format( arnold_version )
+
+delight_version = '8.5.1'
+delight_path_linux = '/opt/3delightForMaya-{0}/Linux-x86_64/'.format( delight_version )
+delight_path_osx = '/opt/3delightForMaya-{0}/Darwin/'.format( delight_version )
+
+tractor_version = '2.2'
+tractor_path_linux = '/opt/pixar/Tractor-{0}'.format( tractor_version )
+tractor_path_osx = '/Applications/pixar/Tractor-{0}'.format( tractor_version )
+
 ## \Todo See if the recommonmark folks would accept a patch with this
 #  functionality.
 class GafferTransform( recommonmark.transform.AutoStructify ) :
@@ -369,11 +385,32 @@ def gafferSourceSubstitutions( app, docName, source ) :
     source[0] = source[0].replace( "!GAFFER_MINOR_VERSION!", str( Gaffer.About.minorVersion() ) )
     source[0] = source[0].replace( "!GAFFER_PATCH_VERSION!", str( Gaffer.About.patchVersion() ) )
 
+    source[0] = source[0].replace( "!GAFFER_LINUX_PACKAGE!", gaffer_linux_package )
+    source[0] = source[0].replace( "!GAFFER_OSX_PACKAGE!", gaffer_osx_package )
+
+def thirdPartySourceSubtitutions( app, docName, source) :
+
+    source[0] = source[0].replace( "!ARNOLD_VERSION!", arnold_version )
+    source[0] = source[0].replace( "!ARNOLD_PATH_LINUX!", arnold_path_linux )
+    source[0] = source[0].replace( "!ARNOLD_PATH_OSX!", arnold_path_osx )
+    source[0] = source[0].replace( "!3DELIGHT_VERSION!", delight_version )
+    source[0] = source[0].replace( "!3DELIGHT_PATH_LINUX!", delight_path_linux )
+    source[0] = source[0].replace( "!3DELIGHT_PATH_OSX!", delight_path_osx )
+    source[0] = source[0].replace( "!TRACTOR_PATH_LINUX!", tractor_path_linux )
+    source[0] = source[0].replace( "!TRACTOR_PATH_OSX!", tractor_path_osx )
+
 def setup( app ) :
 
     app.add_config_value(
     	'recommonmark_config',
     	{
+            # Disable automatic TOC parsing in Markdown. Stopgap solution to prevent 
+            # Autostructify from turning all Markdown list items with links into TOC 
+            # items. Lets us include end-of-article "See Also" lists.
+            'enable_auto_toc_tree': 'False',
+
+            # Disable automatic TOC parsing of headers
+            'auto_toc_tree_section': 'True'
         },
         True
     )
@@ -381,3 +418,8 @@ def setup( app ) :
     app.add_transform( GafferTransform )
 
     app.connect( "source-read", gafferSourceSubstitutions )
+    
+    app.connect( "source-read", thirdPartySourceSubtitutions )
+
+    # Add the custom stylesheet; added to all .md and .rst files in source
+    app.add_stylesheet( 'gaffer.css' )

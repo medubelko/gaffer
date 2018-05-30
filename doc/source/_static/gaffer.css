@@ -1,0 +1,24 @@
+/* Custom Gaffer CSS, with overrides for ReadTheDocs' theme.css */
+
+.no-display {
+    display: none;
+}
+
+/* Add custom keystroke class */
+span.keystroke {
+    font-size: 0.9em;
+    border: 1px solid #888888;
+    border-radius: 3px;
+    background: #f5f5f5;
+    padding: 0 3px 1px 3px;
+}
+
+/* Make search bar color match Gaffer branding */
+.wy-side-nav-search {
+    background-color: #b92227;
+}
+
+/* Make version color visible with branding */
+.wy-side-nav-search > div.version {
+    color: inherit;
+}
