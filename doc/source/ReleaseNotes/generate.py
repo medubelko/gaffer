@@ -1,8 +1,8 @@
 import re
 
 index = open( "./index.md", "w" )
-index.write( "Release Notes\n" )
-index.write( "=============\n\n" )
+index.write( "# Release Notes #\n\n" )
+index.write( "## Contents ##\n\n" )
 
 changes = open( "../../../Changes" )
 
