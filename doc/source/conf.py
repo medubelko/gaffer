@@ -404,13 +404,12 @@ def setup( app ) :
     app.add_config_value(
     	'recommonmark_config',
     	{
-            # Disable automatic TOC parsing in Markdown. Stopgap solution to prevent 
-            # Autostructify from turning all Markdown list items with links into TOC 
-            # items. Lets us include end-of-article "See Also" lists.
+            # Disable general automatic TOC parsing. Prevents Autostructify
+            # from turning all Markdown list items with links into TOC items. 
             'enable_auto_toc_tree': 'False',
 
-            # Disable automatic TOC parsing of headers
-            'auto_toc_tree_section': 'True'
+            # Use auto TOC parsing for headers named "Contents"
+            'auto_toc_tree_section': 'Contents'
         },
         True
     )
