@@ -392,9 +392,10 @@ def thirdPartySourceSubtitutions( app, docName, source) :
     source[0] = source[0].replace( "!ARNOLD_VERSION!", arnold_version )
     source[0] = source[0].replace( "!ARNOLD_PATH_LINUX!", arnold_path_linux )
     source[0] = source[0].replace( "!ARNOLD_PATH_OSX!", arnold_path_osx )
-    source[0] = source[0].replace( "!3DELIGHT_VERSION!", delight_version )
-    source[0] = source[0].replace( "!3DELIGHT_PATH_LINUX!", delight_path_linux )
-    source[0] = source[0].replace( "!3DELIGHT_PATH_OSX!", delight_path_osx )
+    source[0] = source[0].replace( "!DELIGHT_VERSION!", delight_version )
+    source[0] = source[0].replace( "!DELIGHT_PATH_LINUX!", delight_path_linux )
+    source[0] = source[0].replace( "!DELIGHT_PATH_OSX!", delight_path_osx )
+    source[0] = source[0].replace( "!TRACTOR_VERSION!", tractor_version )
     source[0] = source[0].replace( "!TRACTOR_PATH_LINUX!", tractor_path_linux )
     source[0] = source[0].replace( "!TRACTOR_PATH_OSX!", tractor_path_osx )
 
