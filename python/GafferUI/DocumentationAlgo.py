@@ -60,6 +60,7 @@ def exportNodeReference( directory, modules = [], modulePath = "" ) :
 
 	index = open( "%s/index.md" % directory, "w" )
 	index.write( __heading( "Node Reference" ) )
+	index.write( __heading( "Contents", 1 ) )
 
 	for module in sorted( modules, key = lambda x : getattr( x, "__name__" ) ) :
 
@@ -79,7 +80,7 @@ def exportNodeReference( directory, modules = [], modulePath = "" ) :
 				# Skip nodes which look like they've been injected from
 				# another module by one of the compatibility config files.
 				continue
-
+			
 			__makeDirs( directory + "/" + module.__name__ )
 			with open( "%s/%s/%s.md" % ( directory, module.__name__, name ), "w" ) as f :
 				f.write( __nodeDocumentation( node ) )
@@ -89,6 +90,7 @@ def exportNodeReference( directory, modules = [], modulePath = "" ) :
 
 			with open( "%s/%s/index.md" % ( directory, module.__name__ ), "w" ) as f :
 				f.write( __heading( module.__name__ ) )
+				f.write( __heading( "Contents", 1 ) )
 				f.write( moduleIndex )
 
 			index.write( "- [%s](%s/index.md)\n" % ( module.__name__, module.__name__ ) )
@@ -97,7 +99,7 @@ def exportLicenseReference( directory, about ) :
 
 	with open( directory + "/index.md", "w" ) as index :
 
-		index.write( __heading( "License" ) )
+		index.write( __heading( "Licenses" ) )
 		index.write( "```none\n" + __fileContents( about.license() ) + "\n```\n\n" )
 
 		index.write( __heading( "Dependencies", 1 ) )
@@ -171,6 +173,7 @@ def exportCommandLineReference( directory, appPath = "$GAFFER_ROOT/apps", ignore
 	) )
 
 	index.write( "\n\n" )
+	index.write( __heading( "Contents", 1 ) )
 
 	for appName in classLoader.classNames() :
 
