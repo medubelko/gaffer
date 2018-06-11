@@ -1,5 +1,6 @@
-Scripting Reference
-===================
+# Scripting Reference #
+
+## Contents ##
 
 - [Common Operations](CommonOperations/index.md)
 - [String Substitution Syntax](StringSubstitutionSyntax/index.md)

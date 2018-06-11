@@ -2,7 +2,7 @@
 
 ## Contents ##
 
-- [Node Graph](NodeGraph.md)
-- [Viewer](Viewer.md)
-- [Script Editor](ScriptEditor.md)
+- [Node Graph](NodeGraph/index.md)
+- [Viewer](Viewer/index.md)
+- [Script Editor](ScriptEditor/index.md)
 
