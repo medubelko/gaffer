@@ -1,6 +1,6 @@
 # Node Graph #
 
-The following is a list of input device shortcuts for manipulating Gaffer's Node Graph and its interface.
+The following is a list of input device controls and shortcuts for manipulating Gaffer's Node Graph and its interface.
 
 
 ## Node Creation ##

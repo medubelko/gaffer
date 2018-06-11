@@ -1,6 +1,6 @@
 # Viewer #
 
-The following is a list of input device shortcuts for manipulating Gaffer's Viewer when previewing 2D images and 3D scenes.
+The following is a list of input device controls and shortcuts for manipulating Gaffer's Viewer when previewing 2D images and 3D scenes.
 
 
 ## 2D Image Navigation ##

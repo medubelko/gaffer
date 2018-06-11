@@ -1,4 +1,4 @@
-# UI Reference #
+# UI Control Reference #
 
 ## Contents ##
 

@@ -1,6 +1,6 @@
 # Script Editor #
 
-The following is a list of input device shortcuts for using Gaffer's Script Editor.
+The following is a list of input device controls and shortcuts for using Gaffer's Script Editor.
 
 
 ## Text Entry ##
