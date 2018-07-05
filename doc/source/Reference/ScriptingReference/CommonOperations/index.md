@@ -1,10 +1,10 @@
-Common Operations
-=================
+# Common Operations #
 
-Node Graphs
------------
 
-### Create a node
+## Node Operations ##
+
+
+### Create a node ###
 
 ```
 import GafferScene
@@ -12,156 +12,190 @@ node = GafferScene.Sphere()
 script.addChild( node )
 ```
 
-### Rename a node
+
+### Delete a node ###
+
+```
+script.removeChild( node )
+```
+
+
+### Rename a node ###
 
 ```
 node.setName( "newName" )
 ```
 
-### Get a plug value
+
+## Plug Operations ##
+
+
+### Get a plug's value ###
 
 ```
 value = node["plugName"].getValue()
 ```
 
-### Set a plug value
+
+### Set a plug's value ###
 
 ```
 node["plugName"].setValue( value )
 ```
 
-### Make a connection
+
+### Create a connection ###
 
 ```
-destinationNode["destinationPlugName"].setInput( sourceNode["sourceNode"] )
+destinationNode["inputPlugName"].setInput( sourceNode["outputPlugName"] )
 ```
 
-### Break a connection
+
+### Delete a connection ###
 
 ```
-node["plugName"].setInput( None )
+node["inputPlugName"].setInput( None )
 ```
 
-Script nodes
-------------
 
-### Get a node by name
+## Script Operations ##
+
+These operations apply to the `script` variable, which is the project-level context, and root, of every Gaffer script.
+
+
+### Get a node by name ###
 
 ```
 node = script["nodeName"]
 ```
 
-### Loop over all nodes
+
+### Loop over all nodes ###
 
 ```
 for node in script.children( Gaffer.Node ) :
-	...
+    # Loop-scope code goes here
 ```
 
-### Get the current filename
 
-```
-script["fileName"].getValue()
-```
-
-### Save a copy
+### Write script to file ###
 
 ```
 script.serialiseToFile( "/path/to/file.gfr" )
 ```
 
-### Query a script variable
+
+### Get the file path to the script ###
+
+```
+script["fileName"].getValue()
+```
+
+
+### Query a script-level context variable ###
 
 ```
 script.context()["project:rootDirectory"]
 ```
 
-### Select a node
+
+### Select a node ###
 
 ```
 script.selection().clear()
 script.selection().add( script["nodeName"] )
 ```
 
-### Get the frame range
+
+### Get the frame range ###
 
 ```
-start = script['frameRange']['start'].getValue()
-end = script['frameRange']['end'].getValue()
+start = script["frameRange"]["start"].getValue()
+end = script["frameRange"]["end"].getValue()
 ```
 
-### Set the current frame
+### Set the current frame ###
 
 ```
 script.context().setFrame( frame )
 ```
 
-Metadata
---------
 
-### Register a value for a plug/node
+## Metadata Operations ##
+
+
+### Register a value for a plug or node
 
 ```
 Gaffer.Metadata.registerValue( plug, "name", value )
 Gaffer.Metadata.registerValue( node, "name", value )
 ```
 
-### Query a value for a plug/node
+
+### Query a value for a plug or node
 
 ```
 Gaffer.Metadata.value( plug, "name" )
 Gaffer.Metadata.value( node, "name" )
 ```
 
-Scenes
-------
 
-### Get an option
+## Scene Operations ##
+
+
+### Get an option ###
 
 ```
 g = node["out"]["globals"].getValue()
 o = g["option:render:camera"].value
 ```
 
-### Get an object at a location
+
+### Get an object at a location ###
 
 ```
 o = node["out"].object( "/path/to/location" )
 ```
 
-### Get the local transform at a location
+
+### Get the local transform at a location ###
 
 ```
 matrix = node["out"].transform( "/path/to/location" )
 ```
 
-### Get the full (world) transform at a location
+
+### Get the full (world) transform at a location ###
 
 ```
 node["out"].fullTransform( "/path/to/location" )
 ```
 
-### Get the local bounding box of a location
+
+### Get the local bounding box of a location ###
 
 ```
 bound = node["out"].bound( "/path/to/location" )
 ```
 
-### Get the local attributes of a location
+
+### Get the local attributes of a location ###
 
 ```
 attributes = node["out"].attributes( "/path/to/location" )
 attribute = attributes["name"].value
 ```
 
-### Get the full (inherited + local) attributes of a location
+
+### Get the full (inherited + local) attributes of a location ###
 
 ```
 attributes = node["out"].fullAttributes( "/path/to/location" )
 attribute = attributes["name"].value
 ```
 
-### Recurse through the scene hierarchy
+
+### Recurse through the scene hierarchy ###
 
 ```
 def visit( scene, path ) :

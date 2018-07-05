@@ -1,70 +1,81 @@
-Using The OSLCode Node
-======================
+# Tutorial: Using The OSLCode Node #
 
-Gaffer allows the creation of networks of predefined [OSL][1] shaders to be used in renderering and image and geometry processing, without any coding required. But sometimes the shader you want doesn't exist, or it's easier to express your ideas through a few lines of code. In these situations, the OSLCode node allows OSL source code to be entered directly, to create new shaders on the fly.
+Using OSL to build shaders opens up a new world of possibilities for complex and customized looks and shading. Gaffer's built-in OSLCode node enables execution of arbitrary code in OSL. This tutorial will demonstrate how to build a very rudimentary striped shader. This tutorial will cover the folling topics:
 
-A one line shader
------------------
+- Inputting basic code into the OSLCode node
+- Adding input and output parameter plugs to the OSLCode node
 
-Start by creating an OSLCode node in the GraphEditor. With this selected, the NodeEditor will display a blank shader to be edited.
+Before starting this tutorial, we recommend completing the [Assembling the Gaffer Bot](../../GettingStarted/index.md) and [Introductiont to Scripting](../GettingStarted/index.md) starter tutorials.
 
-![Blank Shader](images/blank.png)
 
-We'll start by adding some parameters (inputs and outputs) for the shader.
+## Creating a One-Line Shader ##
 
-- Click on the upper ![Plus icon](images/plus.png) and choose "Float" from the menu. This creates an input parameter which takes a floating point number.
-- Double click the "Input1" label that appears, and rename the parameter to `width`.
-- Enter the value `0.025` into the width field.
-- Click on the lower ![Plus Icon](images/plus.png) and choose "Color" from the menu. This creates an output color parameter.
-- Double click the "Output1" label, and rename the parameter to "stripes".
+First, we will demonstrate how to create a basic shader and apply some parameter plugs to it.
 
-![Parameters](images/parameters.png)
+1. Create an OSLCode node and select it. The _Viewer_ and _Node Editor_ will show a shader with empty values.
 
-We can now enter any OSL code we want to generate the output from the input. Start by entering the following :
+    ![Default OSLCode node in Viewer](images/viewerShader.png "Default OSLCode node in Viewer")
 
-```
-stripes = aastep( 0, sin( v * M_PI / width ) )
-```
+    ![Default OSLCode node in Node Editor](images/nodeEditorShader.png "Default OSLCode node in Node Editor")
 
-Now hit _Control + Enter_ to update the shader. The Viewer will update to show a shader ball with the shader on it, and adjusting the width parameter will update the render interactively.
+2. In the _Node Editor_, in the _Inputs_ section, click ![the plus icon](images/plus.png "The plus icon") and select _Float_ from the drop-down menu. A Float input plug named _Input1_ will appear.
 
-![Shader ball](images/shaderBallStripes.png)
+3. Double-click the _Input1_ label, and rename it to `width`.
 
-> Tip : Enter the names for input and outputs into the code easily by dragging
-> their labels into the code editor. This is especially useful for color
-> spline inputs, where some special syntax is required to evaluate the spline.
+4. Set the Width value to `0.025`.
 
-Adding some more features
----------------------
+5. In the _Outputs_ section, click ![the plus icon](images/plus.png "The plus icon") and select _Color_ from the drop-down menu. A Color output plug named _Output1_ will appear.
 
-Let's add a bit of color and some wobble to our shader, to demonstrate a few more features of OSL :
+6. Double-click the _Output1_ label, and rename it to `stripes`.
 
-- Add a color input and rename it to `color1`.
-- Add another color input and rename it to `color2`.
-- Click on the colour swatches to pick some tasteful hues.
+7. Any OSL code can be inputted to generate output from the input parameter plugs. Try typing a simple striped pattern into the _Code_ input field:
 
-Now update the code :
+    ```
+    stripes = aastep( 0, sin( v * M_PI / width ) )
+    ```
 
-```
-float vv = v + 0.05 * pnoise( u * 20, 4 );
-float m = aastep( 0, sin( vv * M_PI / width ) );
-stripes = mix( color1, color2, m );
-```
+    ![OSLCode node's parameters and plugs](images/nodeEditorShaderParameters.png "OSLCode node's parameters and plugs")
 
-And as before, hit _Control + Enter_ to update the shader.
+Since shader previews in the _Viewer_ are interactive, the _Viewer_ will automatically update to show your striped shader.
 
-![Shader ball](images/shaderBallColoredStripes.png)
+![The shader ball, with stripes](images/viewerShaderStripes.png "The shader ball, with stripes")
 
-No doubt you didn't come here to learn how to make blue and red wobbly stripes, but you are now armed with the ability to add inputs and outputs, edit code and view the results interactively, so are hopefully in a position to create the shader you _do_ want.
+> Tip :
+> To reference a plug from the _Inputs_ or _Outputs_ sections in your OSL code, drag and drop its label onto the _Code_ input field. This is key to referring to the Color Spline input, which uses a special syntax.
 
-> Tip : Explore the available functions in OSL and add them easily to the code by using the _/Insert_ menu items from the _Right Click_ popup menu.
 
-OSL Resources
--------------
+## Creating a Multi-Line Shader ##
 
-This short tutorial has only scratched the surface of what can be done with Open Shading Language. The following resources are a good place to learn more :
+Here we will demonstrate a few additional shader parameter plugs, with some slightly more complex code.
 
-- The [language specification](https://github.com/imageworks/OpenShadingLanguage/blob/master/src/doc/osl-languagespec.pdf) (also available from the _/Help/OpenShadingLanguage/Language Reference_ menu item in Gaffer)
-- The [OSL mailing list](https://groups.google.com/forum/#!forum/osl-dev)
+Try adding some color and wobble to your shader:
 
-[1]: https://github.com/imageworks/OpenShadingLanguage
+1. Add a color input parameter plug and rename it to `color1`.
+
+2. Add another color input parameter plug and rename it to `color2`.
+
+3. Click the color swatch (the black rectangle) at the far-right of the plug.
+    
+    ![The color plugs](images/nodeEditorColorInputs.png "The color plugs")
+
+    For each plug, pick a color of your choosing.
+
+4. Update the code:
+
+    ```
+    float vv = v + 0.05 * pnoise( u * 20, 4 );
+    float m = aastep( 0, sin( vv * M_PI / width ) );
+    stripes = mix( color1, color2, m );
+    ```
+
+![The shader ball with stripes and colors](images/viewerShaderStripesColors.png "The shader ball with stripes and colors")
+
+
+## Recap ##
+
+While this was quick introduction with a very simple shader, you should now be equipped to use the OSLCode node by interactively adding input and output parameter plugs and editing code.
+
+
+## See Also ##
+
+- [Scripting Nodes](../ScriptingNodes/index.md)
