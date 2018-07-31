@@ -287,6 +287,14 @@ options.Add(
 )
 
 options.Add(
+	BoolVariable( "DOCS_REBUILD", "Enable complete rebuilding of all docs files, regardless of " "whether existing files are present", False)
+)
+
+options.Add(
+	BoolVariable( "DOCS_SCRIPTS", "Enable building of docs scripts", True)
+)
+
+options.Add(
 	"INSTALL_POST_COMMAND",
 	"A command which is run following a successful install process. "
 	"This could be used to customise installation further for a "
@@ -1200,34 +1208,40 @@ def buildDocs( target, source, env ) :
 	# Run any python scripts we find in the document source tree. These are
 	# used to autogenerate source files for processing by sphinx.
 
-	for root, dirs, files in os.walk( str( source[0] ) ) :
-		for f in files :
-			ext = os.path.splitext( f )[1]
-			command = []
-			if ext == ".py" :
-				command = [ "gaffer", "env", "python", f ]
-			elif ext == ".sh" :
-				command = [ "gaffer", "env", "./" + f ]
-			if command :
-				sys.stdout.write( "Running {0}\n".format( os.path.join( root, f ) ) )
-				subprocess.check_call( command, cwd = root, env = env["ENV"] )
+	if env["DOCS_SCRIPTS"] :
+		for root, dirs, files in os.walk( str( source[0] ) ) :
+			for f in files :
+				ext = os.path.splitext( f )[1]
+				command = []
+				if ext == ".py" :
+					command = [ "gaffer", "env", "python", f ]
+				elif ext == ".sh" :
+					command = [ "gaffer", "env", "./" + f ]
+				if command :
+					sys.stdout.write( "Running {0}\n".format( os.path.join( root, f ) ) )
+					subprocess.check_call( command, cwd = root, env = env["ENV"] )
 
 	# Run sphinx to generate the final documentation.
 
-	subprocess.check_call(
-		[
+	__sphinxProcess = [
 			"gaffer", "env", "python",
 			findOnPath( env.subst( "$SPHINX" ), env["ENV"]["PATH"] ),
 			"-b", "html",
 			str( source[0] ), os.path.dirname( str( target[0] ) )
-		],
+	]
+
+	if env["DOCS_REBUILD"] :
+		__sphinxProcess.append( "-a" )
+
+	subprocess.check_call(
+		__sphinxProcess,
 		env = env["ENV"]
 	)
 
 if conf.checkSphinx() :
 
 	docs = commandEnv.Command( "$BUILD_DIR/doc/gaffer/html/index.html", "doc/source", buildDocs )
-	commandEnv.Depends( docs, "build" )
+	#commandEnv.Depends( docs, "build" )
 	if resources is not None :
 		commandEnv.Depends( docs, resources )
 	commandEnv.AlwaysBuild( docs )

@@ -10,3 +10,5 @@ doc/python
 config.log
 .idea
 .sconf_temp
+doc/source/ReleaseNotes/re
+*.pyc

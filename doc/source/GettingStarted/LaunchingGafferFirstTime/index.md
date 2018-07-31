@@ -13,8 +13,8 @@ To launch Gaffer for the first time:
 
 2. Navigate to the Gaffer binary directory and run the Gaffer application:
     ```shell
-    user@desktop ~ $ cd /opt/gaffer-!GAFFER_LINUX_PACKAGE!-linux/bin
-    user@desktop /opt/gaffer-!GAFFER_LINUX_PACKAGE!-linux/bin $ ./gaffer
+    user@desktop ~ $ cd /opt/gaffer-!GAFFER_VERSION!-linux/bin
+    user@desktop /opt/gaffer-!GAFFER_VERSION!-linux/bin $ ./gaffer
     ```
 
 Gaffer will open in a new window.
@@ -22,12 +22,12 @@ Gaffer will open in a new window.
 
 ## Launching Gaffer for the First Time in OSX ##
 
-1. Open a terminal (**Finder** > **Go** > **Utilities** > **Terminal**).
+1. Open the terminal (**Finder** > **Go** > **Utilities** > **Terminal**).
 
 2. Navigate to the Gaffer binary directory and run the Gaffer application:
     ```shell
-    MacBook:~ user$ cd /opt/gaffer-!GAFFER_OSX_PACKAGE!-osx/bin
-    MacBook:/opt/gaffer-!GAFFER_OSX_PACKAGE!-osx/bin user$ ./gaffer
+    MacBook:~ user$ cd /opt/gaffer-!GAFFER_VERSION!-osx/bin
+    MacBook:/opt/gaffer-!GAFFER_VERSION!-osx/bin user$ ./gaffer
     ```
 
 Gaffer will open in a new window.
@@ -37,6 +37,6 @@ Gaffer will open in a new window.
 
 ## See Also ##
 
-* [Installing Gaffer](../InstallingGaffer/InstallingGaffer.md)
-* [Setting up the "gaffer" command](../SettingUpGafferCommand/SettingUpGafferCommand.md)
-* [Configuring Gaffer for Third-Party Tools](../ConfiguringGafferForThirdPartyTools/ConfiguringGafferThirdPartyTools.md)
+* [Installing Gaffer](../InstallingGaffer/index.md)
+* [Setting up the "gaffer" command](../SettingUpGafferCommand/index.md)
+* [Configuring Gaffer for Third-Party Tools](../ConfiguringGafferForThirdPartyTools/index.md)

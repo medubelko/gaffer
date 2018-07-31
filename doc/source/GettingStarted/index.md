@@ -2,24 +2,24 @@
 
 ### Basic Installation ###
 
-* [Installing Gaffer](InstallingGaffer/InstallingGaffer.md)
-* [Launching Gaffer for the First Time](LaunchingGafferFirstTime/LaunchingGafferFirstTime.md)
+* [Installing Gaffer](InstallingGaffer/index.md)
+* [Launching Gaffer for the First Time](LaunchingGafferFirstTime/index.md)
 
-### Complete Installation ###
+### Advanced Installation ###
 
-* [Setting Up the "gaffer" Command](SettingUpGafferCommand/SettingUpGafferCommand.md)
-* [Configuring Gaffer for Third-Party Tools](ConfiguringGafferForThirdPartyTools/ConfiguringGafferForThirdPartyTools.md)
-* [Enabling Debug Mode](EnablingDebugMode/EnablingDebugMode.md)
+* [Setting Up the "gaffer" Command](SettingUpGafferCommand/index.md)
+* [Configuring Gaffer for Third-Party Tools](ConfiguringGafferForThirdPartyTools/index.md)
+* [Enabling Debug Mode](EnablingDebugMode/index.md)
 
 ### Introductory Tutorials ###
 
-* [Tutorial: Assembling the Gaffer Bot](FirstTutorial/FirstTutorial.md)
-* [Tutorial: Everything But the Kitchen Sink](SecondTutorial/SecondTutorial.md)
-* [Tutorial: Turn 'til the Cows Come Home](TurntableTutorial/TurntableTutorial.md)
-* [Tutorial: Daily Dally](DailyTutorial/DailyTutorial.md)
-* [Tutorial: First Contact](ContactSheetTutorial/ContactSheetTutorial.md)
-* [Tutorial: Basic Scripting](BasicScriptingTutorial/BasicScriptingTutorial.md)
-* [Tutorial: Managing Complexity](ComplexityTutorial/ComplexityTutorial.md)
+* [Tutorial: Assembling the Gaffer Bot](BeginnerTutorial/index.md)
+* [Tutorial: Basic Scripting](BasicScriptingTutorial/index.md)
+
+<!-- * [Tutorial: Everything But the Kitchen Sink](IntermediateTutorial/index.md) -->
+<!-- * [Tutorial: Turn 'til the Cows Come Home](TurntableTutorial/index.md) -->
+<!-- * [Tutorial: Daily Dally](DailyTutorial/index.md) -->
+<!-- * [Tutorial: First Contact](ContactSheetTutorial/index.md) -->
 
 <!-- TOC -->
 
@@ -27,17 +27,19 @@
 .. toctree::
     :hidden:
 
-
-    InstallingGaffer/InstallingGaffer.md
-    LaunchingGafferFirstTime/LaunchingGafferFirstTime.md
-    SettingUpGafferCommand/SettingUpGafferCommand.md
-    ConfiguringGafferForThirdPartyTools/ConfiguringGafferForThirdPartyTools.md
-    EnablingDebugMode/EnablingDebugMode.md
-    FirstTutorial/FirstTutorial.md
-    SecondTutorial/SecondTutorial.md
-    TurntableTutorial/TurntableTutorial.md
-    DailyTutorial/DailyTutorial.md
-    ContactSheetTutorial/ContactSheetTutorial.md
-    BasicScriptingTutorial/BasicScriptingTutorial.md
-    ComplexityTutorial/ComplexityTutorial.md
+    InstallingGaffer/index.md
+    LaunchingGafferFirstTime/index.md
+    SettingUpGafferCommand/index.md
+    ConfiguringGafferForThirdPartyTools/index.md
+    EnablingDebugMode/index.md
+    BeginnerTutorial/index.md
+..
+    IntermediateTutorial/index.md
+..
+    TurntableTutorial/index.md
+..
+    DailyTutorial/index.md
+..
+    ContactSheetTutorial/index.md
+    BasicScriptingTutorial/index.md
 ```

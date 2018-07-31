@@ -17,7 +17,7 @@ Depending on your Linux distribution and how it was configured, you may be runni
 > If you are not sure which terminal you are using, you can find its name by opening a terminal and typing: `echo $0`, which will return `/bin/bash`, `tcsh`, or some equivalent. If you are not using _bash_ or _tcsh_, the same principles of environment variables will apply, and your terminal's documentation should provide a comparable way of modifying the `PATH` variable.
 
 > Note :
-> For the purposes of this procedure, we will assume you have Gaffer installed to `/opt/gaffer-!GAFFER_LINUX_PACKAGE!-linux`.
+> For the purposes of this procedure, we will assume you have Gaffer installed to `/opt/gaffer-!GAFFER_VERSION!-linux`
 
 To set up the `gaffer` command:
 
@@ -25,12 +25,12 @@ To set up the `gaffer` command:
 
 2. Use a text editor, such as _gedit_ or _vim_, to open your terminal's user configuration file:
     
-    * _bash_ configuration file: `/.bashrc`
-    * _tcsh_ configuration file: `/.tcshrc`
+    * _bash_ configuration file: `~/.bashrc`
+    * _tcsh_ configuration file: `~/.tcshrc`
 
 3. At the end of the file, append the location of Gaffer's binary directory to the end of the `PATH` variable:
-    * _bash_: `export PATH=$PATH\:/opt/gaffer-!GAFFER_LINUX_PACKAGE!-linux/bin`
-    * _tcsh_: `setenv PATH=$PATH\:/opt/gaffer-!GAFFER_LINUX_PACKAGE!-linux/bin`
+    * _bash_: `export PATH=$PATH\:/opt/gaffer-!GAFFER_VERSION!-linux/bin`
+    * _tcsh_: `setenv PATH=$PATH\:/opt/gaffer-!GAFFER_VERSION!-linux/bin`
 
 4. Save, and close your text editor.
 
@@ -40,18 +40,18 @@ To set up the `gaffer` command:
     ```shell
     user@desktop ~ $ source ~/.bash_profile
     user@desktop ~ $ echo $PATH
-    /usr/local/bin:/usr/bin:/bin:/opt/gaffer-!GAFFER_LINUX_PACKAGE!-linux/bin
+    /usr/local/bin:/usr/bin:/bin:/opt/gaffer-!GAFFER_VERSION!-linux/bin
     ```
     
     * _tcsh_:
     ```shell
     user@desktop ~ $ source ~/.tcsh_profile
     user@desktop ~ $ echo $PATH
-    /usr/local/bin:/usr/bin:/bin:/opt/gaffer-!GAFFER_LINUX_PACKAGE!-linux/bin
+    /usr/local/bin:/usr/bin:/bin:/opt/gaffer-!GAFFER_VERSION!-linux/bin
     ```
     
     > Note :
-    > Depending on your system configuration, the beginning of your `PATH` variable might not appear exactly as above. What's important is whether the `/opt/gaffer-!GAFFER_LINUX_PACKAGE!-linux/bin` location appears at the end.
+    > Depending on your system configuration, the beginning of your `PATH` variable might not appear exactly as above. What's important is whether the `/opt/gaffer-!GAFFER_VERSION!-linux/bin` location appears at the end.
 
 `gaffer` is now a command you can execute from any directory in the terminal.
 
@@ -61,11 +61,11 @@ To set up the `gaffer` command:
 OSX's default terminal is _bash_, so you will be adding to the `PATH` variable by editing _bash's_ user config.
 
 > Note :
-> For the purposes of this procedure, we will assume you have Gaffer installed to `/opt/gaffer-!GAFFER_OSX_PACKAGE!-osx`.
+> For the purposes of this procedure, we will assume you have Gaffer installed to `/opt/gaffer-!GAFFER_VERSION!-osx`.
 
 To set up the `gaffer` command in OSX:
 
-1. Open a terminal.
+1. Open the terminal (**Finder** > **Go** > **Utilities** > **Terminal**).
 
 2. Create and edit _bash's_ user configuration file:
 
@@ -78,7 +78,7 @@ To set up the `gaffer` command in OSX:
 3. At the end of the file, append the location of Gaffer's binary directory to the end of the `PATH` variable:
 
     ```
-    export PATH=$PATH\:/opt/gaffer-!GAFFER_OSX_PACKAGE!-osx/bin
+    export PATH=$PATH\:/opt/gaffer-!GAFFER_VERSION!-osx/bin
     ```
 
 4. Reload the _bash_ user configuration file and test that the `PATH` variable has been updated:
@@ -86,11 +86,11 @@ To set up the `gaffer` command in OSX:
     ```shell
     MacBook:~ user$ source ~/.bash_profile
     MacBook:~ user$ echo $PATH
-    /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/gaffer-!GAFFER_OSX_PACKAGE!-osx/bin
+    /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/gaffer-!GAFFER_VERSION!-osx/bin
     ```
 
     > Note :
-    > Depending on your system configuration, the beginning of your `PATH` variable might not appear exactly as above. What's important is whether the `/opt/gaffer-!GAFFER_OSX_PACKAGE!-osx/bin` location appears at the end.
+    > Depending on your system configuration, the beginning of your `PATH` variable might not appear exactly as above. What's important is whether the `/opt/gaffer-!GAFFER_VERSION!-osx/bin` location appears at the end.
 
 `gaffer` is now a command you can execute from any directory in the terminal.
 
@@ -111,9 +111,9 @@ user@desktop ~ $ gaffer
 MacBook:~ user$ gaffer
 ```
 
-## Opening Gaffer Graphs in the Terminal ##
+## Opening Gaffer Scripts in the Terminal ##
 
-You can also use the command to open Gaffer graphs you have created.
+You can also use the command to open Gaffer scripts you have created.
 
 
 ### Linux ###
@@ -138,5 +138,5 @@ MacBook:~/gaffer/projects/default/scripts user$ gaffer myFirstProject.gfr
 
 ## See Also ##
 
-* [Installing Gaffer](../InstallingGaffer/InstallingGaffer.md)
-* [Configuring Gaffer for third-party tools](../ConfiguringGafferForThirdPartyTools/ConfiguringGafferForThirdPartyTools.md)
+* [Installing Gaffer](../InstallingGaffer/index.md)
+* [Configuring Gaffer for third-party tools](../ConfiguringGafferForThirdPartyTools/index.md)

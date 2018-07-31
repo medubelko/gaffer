@@ -5,7 +5,7 @@ Gaffer is shipped with Appleseed, an open-source renderer, which requires no add
 * 3Delight
 * Tractor
 
-In order to make Gaffer interact with these tools, you will need to set some additional [environment variables](../SettingUpGafferCommand/SettingUpGafferCommand.md).
+In order to make Gaffer interact with these tools, you will need to set some additional [environment variables](../SettingUpGafferCommand/index.md).
 
 > Note :
 > For the purposes of these instructions, we will assume you are using the bash shell and are familiar with terminal commands. Other shells will have comparable methods for setting environment variables.
@@ -160,5 +160,5 @@ To add the Tractor python module to the `PYTHONPATH` environment variable in OSX
 
 ## See Also ##
 
-* [Setting up the "gaffer" command](../SettingUpGafferCommand/SettingUpGafferCommand.md)
-* [Installing Gaffer](../InstallingGaffer/InstallingGaffer.md)
+* [Setting up the "gaffer" command](../SettingUpGafferCommand/index.md)
+* [Installing Gaffer](../InstallingGaffer/index.md)
